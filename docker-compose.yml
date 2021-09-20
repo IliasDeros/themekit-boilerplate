@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  themekit:
+    build: .
+
+    # theme watch: Upload files to shopify on change
+    # --ignores: Do not upload files matching patterns in .themeignore
+    # --notify: Updates a file on theme update to notify browsersync
+    command: theme watch --ignores .themeignore --notify /tmp/theme_updated
+
+    working_dir: /Theme
+    volumes:
+      - ./Theme:/Theme
+      - ./tmp:/tmp
