@@ -1,5 +1,3 @@
-**Deprecation Notice:** [Shopify CLI] replaces Theme Kit for most Shopify theme development tasks.
-
 # Shopify Site
 
 Custom theme for a shopify site. See source code under [Theme](./Theme)
@@ -7,25 +5,23 @@ Custom theme for a shopify site. See source code under [Theme](./Theme)
 ## Getting Started
 
 See [Generate API credentials]:
-1. Login to shopify admin
-2. Gather:
-    * `<private app password>` - A [private app] with **Theme read & write permissions**
-    * `<theme id>` - Duplicate the live theme, name the duplicate "Dev theme"
+1. Add [theme-kit-access](https://apps.shopify.com/theme-kit-access) app to your Shopify store
+2. Add yourself as developer. **You will receive the themekit password by email**
 
 ```
-APP_PWD=<private app password>
+PASS=<themekit password>
 STORE=yourstore.myshopify.com
 
 # List themes
-docker-compose run --rm themekit theme get -s=$STORE -p=$APP_PWD --list
+docker-compose run --rm themekit theme get -s=$STORE -p=$PASS --list
 > [<live theme id>][live] live theme
 > [<theme id>] Dev theme
 
 # Download live theme
-docker-compose run --rm themekit theme get -s=$STORE -p=$APP_PWD -e live -t <live theme id>
+docker-compose run --rm themekit theme get -s=$STORE -p=$PASS -e live -t <live theme id>
 
 # Download "Dev theme"
-docker-compose run --rm themekit theme get -s=$STORE -p=$APP_PWD -t <theme id>
+docker-compose run --rm themekit theme get -s=$STORE -p=$PASS -t <theme id>
 
 # https://yourstore.myshopify.com?preview_theme_id=<theme id>
 docker-compose up
@@ -42,7 +38,7 @@ docker-compose up
 docker-compose run --rm themekit theme download # config/settings_data.json
 
 # Push changes
-docker-compose run --rm themekit theme deploy --ignores .themeignore # -e live
+docker-compose run --rm themekit theme deploy --ignores .themeignore # -e live --allow-live
 ```
 
 ### Optional: Live Reload

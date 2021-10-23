@@ -1,8 +1,8 @@
 FROM python:3-alpine
 
 # Install themekit
-RUN wget https://raw.githubusercontent.com/Shopify/themekit/master/scripts/install.py
-RUN python install.py
+RUN wget https://shopify.dev/themekit.py
+RUN python themekit.py
 
 # Usage:
 #   docker build . -t theme:dev
