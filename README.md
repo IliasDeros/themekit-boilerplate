@@ -5,8 +5,10 @@ Custom theme for a shopify site. See source code under [Theme](./Theme)
 ## Getting Started
 
 See [Generate API credentials]:
-1. Add [theme-kit-access](https://apps.shopify.com/theme-kit-access) app to your Shopify store
-2. Add yourself as developer. **You will receive the themekit password by email**
+1. Add [theme-access](https://apps.shopify.com/theme-access) app to your Shopify store
+2. Create yourself a password. **You will receive the themekit password by email**
+
+![image](https://github.com/IliasDeros/themekit-boilerplate/assets/9534435/2d0eda27-50a0-4a99-857f-ca87831d89b1)
 
 ```
 PASS=<themekit password>
