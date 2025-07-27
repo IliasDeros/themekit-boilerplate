@@ -1,51 +1,31 @@
 # Shopify Site
 
-Custom theme for a shopify site. See source code under [Theme](./Theme)
+Custom theme for a shopify site. See source code under [/theme](./theme)
 
-## Getting Started
+```
+# Use original domain from Settings > Domains
+STORE=83637c-4.myshopify.com
 
-See [Generate API credentials]:
+cd Theme/
+npm install -g @shopify/cli@latest
+shopify theme pull --store $STORE
+shopify theme dev
+shopify theme push --ignore config/settings_data.json
+```
+
+Browse your development theme at http://127.0.0.1:9292/
+
+## Optional: Generate a themeaccess password
+
+Unless you have a staff account with theme access, you will need to generate a password to access the theme files.
 1. Add [theme-access](https://apps.shopify.com/theme-access) app to your Shopify store
 2. Create yourself a password. **You will receive the themekit password by email**
 
 ![image](https://github.com/IliasDeros/themekit-boilerplate/assets/9534435/2d0eda27-50a0-4a99-857f-ca87831d89b1)
 
 ```
-PASS=<themekit password>
-STORE=yourstore.myshopify.com
+PASS=shptka_abcd1234
 
-# List themes
-docker-compose run --rm themekit theme get -s=$STORE -p=$PASS --list
-> [<live theme id>][live] live theme
-> [<theme id>] Dev theme
-
-# Download live theme
-docker-compose run --rm themekit theme get -s=$STORE -p=$PASS -e live -t <live theme id>
-
-# Download "Dev theme"
-docker-compose run --rm themekit theme get -s=$STORE -p=$PASS -t <theme id>
-
-# https://yourstore.myshopify.com?preview_theme_id=<theme id>
-docker-compose up
+# Include --password $PASS to all Shopify CLI commands.
+shopify theme pull --store $STORE --password $PASS
 ```
-
-[Generate API credentials]: https://shopify.dev/themes/tools/theme-kit/getting-started#step-2-get-a-theme-kit-password
-[private app]: https://help.shopify.com/en/manual/apps/private-apps#enable-private-app-development-from-the-shopify-admin
-[Shopify CLI]: https://shopify.dev/themes/tools/cli
-
-## Useful commands
-
-```
-# Pull changes
-docker-compose run --rm themekit theme download # config/settings_data.json
-
-# Push changes
-docker-compose run --rm themekit theme deploy --ignores .themeignore # -e live --allow-live
-```
-
-### Optional: Live Reload
-
-Refresh your browser anytime a file is updated
-
-1. Install [browsersync](https://browsersync.io/) using `npm install -g browser-sync`
-2. `browser-sync https://yourstore.myshopify.com?preview_theme_id=<theme id> -c livereload-config.js`
