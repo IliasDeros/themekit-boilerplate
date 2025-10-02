@@ -1,0 +1,4 @@
+# Usage: theme deploy --ignore .themeignore
+
+# Do not overwrite any settings configured by client
+config/settings_data.json

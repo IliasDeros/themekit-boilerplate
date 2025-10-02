@@ -1,0 +1,10 @@
+{
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// Syntax highlighting for Liquid template files
+				"Shopify.theme-check-vscode"
+			]
+		}
+	}
+}
